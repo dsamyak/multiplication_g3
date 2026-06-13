@@ -164,8 +164,8 @@ export default function StoryPhase({ onComplete, audioEnabled }: StoryPhaseProps
             <span>✨</span>
           </div>
           <div className="story-mascot">
-            <div className="mascot" style={{ width: 56, height: 56, fontSize: '1.5rem' }}>🤖</div>
-            <div className="speech-bubble" style={{ fontSize: '0.95rem', padding: '10px 16px', maxWidth: 200 }}>
+            <div className="mascot" style={{ width: 68, height: 68, fontSize: '1.8rem' }}>🤖</div>
+            <div className="speech-bubble" style={{ fontSize: '1.05rem', padding: '12px 18px', maxWidth: 220 }}>
               {s.mascotText}
             </div>
           </div>
