@@ -1,0 +1,15 @@
+/* animations.css */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated, .hop-animation, .particle-burst {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+}
