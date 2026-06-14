@@ -5,7 +5,7 @@ export function useTimer(initialTime: number, onComplete?: () => void) {
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
+    let intervalId: ReturnType<typeof setInterval>;
 
     if (isRunning && timeLeft > 0) {
       intervalId = setInterval(() => {
