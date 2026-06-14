@@ -426,21 +426,21 @@ function ArrayBuilderWorkshop({ onComplete }: { onComplete: (xp: number) => void
       {/* Grid */}
       <div className="arr-grid-wrap">
         <div className="arr-rows-label">← {r.rows} rows →</div>
-        <div className="arr-grid" style={{ '--arr-cols': r.cols } as React.CSSProperties}>
+        <div className="arr-grid">
           {Array.from({ length: r.rows }, (_, ri) => (
             <div
               key={ri}
-              className={`arr-row ${filledRows.has(ri) ? 'filled' : 'empty'}`}
+              className={`arr-row-block ${filledRows.has(ri) ? 'filled' : ''} ${done ? '' : 'clickable'}`}
               onClick={() => clickRow(ri)}
             >
               {Array.from({ length: r.cols }, (_, ci) => (
                 <div key={ci} className={`arr-cell ${filledRows.has(ri) ? 'on' : ''}`}
                   style={{ animationDelay: `${ci * 40}ms` }}>
-                  {filledRows.has(ri) && <span>{r.emoji}</span>}
+                  {filledRows.has(ri) ? <span>{r.emoji}</span> : null}
                 </div>
               ))}
               {!filledRows.has(ri) && !done && (
-                <div className="arr-row-hint">👆 Click to add a row of {r.cols}</div>
+                <div className="arr-row-hint">👆 row {ri + 1}</div>
               )}
             </div>
           ))}
