@@ -5,8 +5,8 @@ This document outlines the architecture and workflow of the custom text-to-speec
 ## Overview
 The application utilizes a hybrid audio pipeline:
 1. **Pre-generation:** Known educational scripts are pre-generated offline using a Node.js script and stored as static `.mp3` assets to ensure zero-latency playback on low-end devices.
-2. **Dynamic Fallback:** If a text string hasn't been pre-generated, the system can fall back to requesting it on-the-fly via the ElevenLabs API.
-3. **Synchronization:** The frontend audio engine parses an array of segments, eagerly preloading upcoming segments to eliminate latency gaps between sentences.
+
+2. **Synchronization:** The frontend audio engine parses an array of segments, eagerly preloading upcoming segments to eliminate latency gaps between sentences.
 
 ---
 
@@ -55,9 +55,8 @@ This module maps application phases (Intro, Wonder, Story, Simulate, Play, Refle
 ### E. Frontend Audio Engine (`src/utils/audio.js`)
 The core playback engine (`getAudioUrl`, `speak`, `narrate`, `preloadNarration`).
 1. **Cache check:** It first checks `audioMap[text]`. If found, it immediately resolves the static asset URL.
-2. **Dynamic Request:** If not found, it attempts to fetch the audio dynamically through `/api/elevenlabs` or directly to ElevenLabs, utilizing an internal memory cache (`elevenLabsCache`).
-3. **Playback:** Uses HTML5 `Audio` API.
-4. **Preloading:** While playing segment `i`, it preemptively calls `getAudioUrl` for segment `i+1` so the asset is downloaded and ready exactly when the previous segment ends, guaranteeing seamless narration.
+2. **Playback:** Uses HTML5 `Audio` API.
+3. **Preloading:** While playing segment `i`, it preemptively calls `getAudioUrl` for segment `i+1` so the asset is downloaded and ready exactly when the previous segment ends, guaranteeing seamless narration.
 
 ---
 
