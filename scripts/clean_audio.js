@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const AUDIO_DIR = path.resolve(__dirname, '../public/assets/audio');
-const MAP_FILE = path.resolve(__dirname, '../src/utils/audioMap.js');
+const MAP_FILE = path.resolve(__dirname, '../src/utils/audioMap.ts');
 
 async function cleanAudio() {
   if (!fs.existsSync(AUDIO_DIR)) {

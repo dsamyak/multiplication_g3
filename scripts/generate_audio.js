@@ -11,7 +11,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 const API_KEY = process.env.VITE_ELEVENLABS_API_KEY;
 const VOICE_ID = 'Xb7hH8MSUJpSbSDYk0k2';
 const AUDIO_DIR = path.resolve(__dirname, '../public/assets/audio');
-const MAP_FILE = path.resolve(__dirname, '../src/utils/audioMap.js');
+const MAP_FILE = path.resolve(__dirname, '../src/utils/audioMap.ts');
 
 const phrases = [
   { text: "Welcome to Multiplication Tables!", style: 'encouragement' },
