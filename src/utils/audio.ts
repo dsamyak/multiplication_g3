@@ -1,3 +1,5 @@
+import audioMap from './audioMap';
+
 export interface NarrationSegment {
   text: string;
   style: string;
@@ -30,6 +32,13 @@ const getElevenLabsSettings = (speechStyle: string) => {
 };
 
 export async function getAudioUrl(text: string, style: string): Promise<string> {
+  // Check static audio map first for exact phrase match
+  // @ts-ignore
+  if (audioMap && audioMap[text]) {
+    // @ts-ignore
+    return audioMap[text];
+  }
+
   const cacheKey = `${text}_${style}`;
   if (elevenLabsCache.has(cacheKey)) {
     return elevenLabsCache.get(cacheKey)!;
